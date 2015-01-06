@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E6BFBF41A5ABDE30056B1E5 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF21A5ABDE30056B1E5 /* error.cpp */; };
+		8E6BFBF71A5ABDFA0056B1E5 /* words.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */; };
+		8E6BFBFA1A5ABEC10056B1E5 /* pcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */; };
+		8E6BFBFD1A5ABED90056B1E5 /* tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFB1A5ABED90056B1E5 /* tab.cpp */; };
+		8E6BFC001A5ABF030056B1E5 /* syntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */; };
 		8E9432BD1A4BB0DC004AF576 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9432BC1A4BB0DC004AF576 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E6BFBF21A5ABDE30056B1E5 /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
+		8E6BFBF31A5ABDE30056B1E5 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = words.cpp; sourceTree = "<group>"; };
+		8E6BFBF61A5ABDFA0056B1E5 /* words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = words.h; sourceTree = "<group>"; };
+		8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pcode.cpp; sourceTree = "<group>"; };
+		8E6BFBF91A5ABEC10056B1E5 /* pcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcode.h; sourceTree = "<group>"; };
+		8E6BFBFB1A5ABED90056B1E5 /* tab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tab.cpp; sourceTree = "<group>"; };
+		8E6BFBFC1A5ABED90056B1E5 /* tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tab.h; sourceTree = "<group>"; };
+		8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syntax.cpp; sourceTree = "<group>"; };
+		8E6BFBFF1A5ABF030056B1E5 /* syntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax.h; sourceTree = "<group>"; };
 		8E9432B91A4BB0DC004AF576 /* Compiler-PL0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Compiler-PL0"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E9432BC1A4BB0DC004AF576 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +73,16 @@
 			isa = PBXGroup;
 			children = (
 				8E9432BC1A4BB0DC004AF576 /* main.cpp */,
+				8E6BFBF61A5ABDFA0056B1E5 /* words.h */,
+				8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */,
+				8E6BFBFF1A5ABF030056B1E5 /* syntax.h */,
+				8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */,
+				8E6BFBFC1A5ABED90056B1E5 /* tab.h */,
+				8E6BFBFB1A5ABED90056B1E5 /* tab.cpp */,
+				8E6BFBF31A5ABDE30056B1E5 /* error.h */,
+				8E6BFBF21A5ABDE30056B1E5 /* error.cpp */,
+				8E6BFBF91A5ABEC10056B1E5 /* pcode.h */,
+				8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */,
 			);
 			path = "Compiler-PL0";
 			sourceTree = "<group>";
@@ -118,7 +143,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6BFBF41A5ABDE30056B1E5 /* error.cpp in Sources */,
+				8E6BFBFA1A5ABEC10056B1E5 /* pcode.cpp in Sources */,
+				8E6BFC001A5ABF030056B1E5 /* syntax.cpp in Sources */,
+				8E6BFBF71A5ABDFA0056B1E5 /* words.cpp in Sources */,
 				8E9432BD1A4BB0DC004AF576 /* main.cpp in Sources */,
+				8E6BFBFD1A5ABED90056B1E5 /* tab.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +262,7 @@
 				8E9432C21A4BB0DC004AF576 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
