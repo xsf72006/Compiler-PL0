@@ -7,3 +7,8 @@
 //
 
 #include "error.h"
+
+void error(int n) {
+    //TODO 添加行号；添加中文错误信息
+    cout << "error at " << cc << ", error code " << n << endl;
+}

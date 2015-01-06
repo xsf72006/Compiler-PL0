@@ -7,3 +7,36 @@
 //
 
 #include "tab.h"
+
+void enter(objecttyp k, int &dx, int lev, int &tx) {
+    strcpy(table[++tx].name, id);
+    table[tx].kind = k;
+    switch (k) {
+        case constant:
+            if (num > amax) {
+                error(30);
+                num = 0;
+            }
+            table[tx].val = num;
+            break;
+        case variable:
+            table[tx].level = lev;
+            table[tx].adr = dx++;
+            break;
+        case procedure:
+            table[tx].level = lev;
+            break;
+        default:
+            break;
+    }
+}
+
+int position(alfa id, int tx) {
+    int i;
+    strcpy(table[0].name, id);
+    i = tx;
+    while (strcmp(table[i].name, id)) {
+        i--;
+    }
+    return i;
+}

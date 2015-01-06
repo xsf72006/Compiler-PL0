@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E6BFBF41A5ABDE30056B1E5 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF21A5ABDE30056B1E5 /* error.cpp */; };
-		8E6BFBF71A5ABDFA0056B1E5 /* words.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */; };
-		8E6BFBFA1A5ABEC10056B1E5 /* pcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */; };
-		8E6BFBFD1A5ABED90056B1E5 /* tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFB1A5ABED90056B1E5 /* tab.cpp */; };
-		8E6BFC001A5ABF030056B1E5 /* syntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */; };
+		8E6BFC0D1A5C19A60056B1E5 /* words.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */; };
+		8E6BFC0E1A5C19A90056B1E5 /* syntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */; };
+		8E6BFC0F1A5C19AB0056B1E5 /* tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBFB1A5ABED90056B1E5 /* tab.cpp */; };
+		8E6BFC101A5C19AD0056B1E5 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF21A5ABDE30056B1E5 /* error.cpp */; };
+		8E6BFC111A5C19B00056B1E5 /* pcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */; };
+		8E6BFC121A5C19B20056B1E5 /* interpret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6BFC041A5C09280056B1E5 /* interpret.cpp */; };
 		8E9432BD1A4BB0DC004AF576 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9432BC1A4BB0DC004AF576 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,9 @@
 		8E6BFBFC1A5ABED90056B1E5 /* tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tab.h; sourceTree = "<group>"; };
 		8E6BFBFE1A5ABF030056B1E5 /* syntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syntax.cpp; sourceTree = "<group>"; };
 		8E6BFBFF1A5ABF030056B1E5 /* syntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax.h; sourceTree = "<group>"; };
+		8E6BFC011A5BB3D80056B1E5 /* def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = def.h; sourceTree = "<group>"; };
+		8E6BFC041A5C09280056B1E5 /* interpret.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interpret.cpp; sourceTree = "<group>"; };
+		8E6BFC051A5C09280056B1E5 /* interpret.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interpret.h; sourceTree = "<group>"; };
 		8E9432B91A4BB0DC004AF576 /* Compiler-PL0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Compiler-PL0"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E9432BC1A4BB0DC004AF576 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,7 @@
 		8E9432BB1A4BB0DC004AF576 /* Compiler-PL0 */ = {
 			isa = PBXGroup;
 			children = (
+				8E6BFC011A5BB3D80056B1E5 /* def.h */,
 				8E9432BC1A4BB0DC004AF576 /* main.cpp */,
 				8E6BFBF61A5ABDFA0056B1E5 /* words.h */,
 				8E6BFBF51A5ABDFA0056B1E5 /* words.cpp */,
@@ -83,6 +88,8 @@
 				8E6BFBF21A5ABDE30056B1E5 /* error.cpp */,
 				8E6BFBF91A5ABEC10056B1E5 /* pcode.h */,
 				8E6BFBF81A5ABEC10056B1E5 /* pcode.cpp */,
+				8E6BFC051A5C09280056B1E5 /* interpret.h */,
+				8E6BFC041A5C09280056B1E5 /* interpret.cpp */,
 			);
 			path = "Compiler-PL0";
 			sourceTree = "<group>";
@@ -143,12 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E6BFBF41A5ABDE30056B1E5 /* error.cpp in Sources */,
-				8E6BFBFA1A5ABEC10056B1E5 /* pcode.cpp in Sources */,
-				8E6BFC001A5ABF030056B1E5 /* syntax.cpp in Sources */,
-				8E6BFBF71A5ABDFA0056B1E5 /* words.cpp in Sources */,
 				8E9432BD1A4BB0DC004AF576 /* main.cpp in Sources */,
-				8E6BFBFD1A5ABED90056B1E5 /* tab.cpp in Sources */,
+				8E6BFC0D1A5C19A60056B1E5 /* words.cpp in Sources */,
+				8E6BFC121A5C19B20056B1E5 /* interpret.cpp in Sources */,
+				8E6BFC0E1A5C19A90056B1E5 /* syntax.cpp in Sources */,
+				8E6BFC0F1A5C19AB0056B1E5 /* tab.cpp in Sources */,
+				8E6BFC101A5C19AD0056B1E5 /* error.cpp in Sources */,
+				8E6BFC111A5C19B00056B1E5 /* pcode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +168,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -200,7 +208,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -232,6 +240,8 @@
 		8E9432C11A4BB0DC004AF576 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -239,6 +249,8 @@
 		8E9432C21A4BB0DC004AF576 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

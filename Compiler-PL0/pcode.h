@@ -9,6 +9,9 @@
 #ifndef __Compiler_PL0__pcode__
 #define __Compiler_PL0__pcode__
 
-#include <stdio.h>
+#include "def.h"
+
+void gen(fct x, int y, int z);
+void listcode(int cx0);
 
 #endif /* defined(__Compiler_PL0__pcode__) */

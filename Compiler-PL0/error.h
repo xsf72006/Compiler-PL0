@@ -9,6 +9,8 @@
 #ifndef __Compiler_PL0__error__
 #define __Compiler_PL0__error__
 
-#include <stdio.h>
+#include "def.h"
+
+void error(int n);
 
 #endif /* defined(__Compiler_PL0__error__) */

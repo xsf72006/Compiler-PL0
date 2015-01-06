@@ -6,47 +6,20 @@
 //  Copyright (c) 2014年 TimmyXu. All rights reserved.
 //
 
-#include <iostream>
-#include <set>
-#include <cstdio>
-#include <cstring>
 
-using namespace::std;
+#include "def.h"
+#include "error.h"
+#include "words.h"
+#include "syntax.h"
+#include "tab.h"
+#include "pcode.h"
+#include "interpret.h"
 
-//常量定义
-const int norw = 13, // 保留字个数
-          txmax = 100, //符号表最大长度
-          nmax = 14, //数字最长位数
-          al = 10, //标识符最大长度
-          amax = 2047, //最大寻址
-          levmax = 3, //嵌套最深层数
-          cxmax = 200; //源代码最大长度
-
-//定义新类型
-enum symbol {nul, ident, number, pluss, minuss, times, slash, oddsym, eql, neq, lss, leq, gtr, geq,
-            lparen, rparen, comma, semicolon, period, becomes, beginsym, endsym, ifsym, thensym,
-            whilesym, dosym, callsym, constsym, varsym, procsym, readsym, writesym}; //保留字枚举类型
-enum objecttyp {constant, variable, procedure}; //对象类型
-enum fct {lit, opr, lod, sto, cal, inta, jmp, jpc, red, wrt}; //P-code函数
-
-typedef char alfa[al]; //标识符名称
-
-typedef set<symbol> symset; //保留字集合
 symbol sym, //最后读的保留字
        wsym[norw],
        ssym[256];
 
-struct instruction {
-    fct f; //指令代码
-    int l, //嵌套层级
-        a; //寻址
-};
-
-struct tab {
-    alfa name;
-    objecttyp kind;
-    int val, level, adr;
-} table;
+tab table[txmax + 1];
 
 char ch, //最后一个读的字符
      line[81],
@@ -111,14 +84,24 @@ int main(int argc, const char * argv[]) {
     kk = al;
     
     //取第一个词
+    getsym();
     //调用语法分析
+    symset tmp;
+    tmp.clear();
+    tmp.insert(declbegsys.begin(), declbegsys.end());
+    tmp.insert(statbegsys.begin(), statbegsys.end());
+    tmp.insert(period);
+    block(0, 0, tmp);
     
     if (sym != period) {
         //错误处理 9
+        error(9);
     }
     
     if (err == 0) {
         //输出P-code
+        //解释
+        interpret();
     } else {
         cout << "ERRORS IN PL/0 PROGRAM" << endl;
     }

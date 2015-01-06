@@ -9,6 +9,10 @@
 #ifndef __Compiler_PL0__tab__
 #define __Compiler_PL0__tab__
 
-#include <stdio.h>
+#include "def.h"
+#include "error.h"
+
+void enter(objecttyp k, int &dx, int lev, int &tx);
+int position(alfa id, int tx);
 
 #endif /* defined(__Compiler_PL0__tab__) */
