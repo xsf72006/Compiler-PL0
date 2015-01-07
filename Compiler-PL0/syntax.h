@@ -16,8 +16,8 @@
 #include "error.h"
 
 void block(int lev, int tx, symset fsys); //子程序语法分析
-void constdeclaration(int lev, int &tx); //常量定义分析
-void vardeclaration(int lev, int &tx); //变量定义分析
+void constdeclaration(int lev, int &tx, int &dx); //常量定义分析
+void vardeclaration(int lev, int &tx, int &dx); //变量定义分析
 void statement(symset fsys, int lev, int &tx); //语句分析
 void expression(symset fsys, int lev, int &tx); //表达式分析
 void term(symset fsys, int lev, int &tx); //项分析

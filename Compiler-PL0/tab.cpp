@@ -34,7 +34,6 @@ void enter(objecttyp k, int &dx, int lev, int &tx) {
 
 int position(string id, int tx) {
     int i;
-    //strcpy(table[0].name, id);
     table[0].name = id;
     i = tx;
     while (table[i].name != id) {

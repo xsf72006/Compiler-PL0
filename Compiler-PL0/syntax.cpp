@@ -8,9 +8,8 @@
 
 #include "syntax.h"
 
-int dx, tx0, cx0;
-
 void block(int lev, int tx, symset fsys) {
+    int dx, tx0, cx0;
     dx = 3;
     tx0 = tx;
     table[tx].adr = cx;
@@ -22,10 +21,10 @@ void block(int lev, int tx, symset fsys) {
         if (sym == constsym) {
             getsym();
             do {
-                constdeclaration(lev, tx);
+                constdeclaration(lev, tx, dx);
                 while (sym == comma) {
                     getsym();
-                    constdeclaration(lev, tx);
+                    constdeclaration(lev, tx, dx);
                 }
                 if (sym == semicolon) {
                     getsym();
@@ -37,10 +36,10 @@ void block(int lev, int tx, symset fsys) {
         if (sym == varsym) {
             getsym();
             do {
-                vardeclaration(lev, tx);
+                vardeclaration(lev, tx, dx);
                 while (sym == comma) {
                     getsym();
-                    vardeclaration(lev, tx);
+                    vardeclaration(lev, tx, dx);
                 }
                 if (sym == semicolon) {
                     getsym();
@@ -103,7 +102,7 @@ void block(int lev, int tx, symset fsys) {
     //listcode(cx0);
 }
 
-void constdeclaration(int lev, int &tx) {
+void constdeclaration(int lev, int &tx, int &dx) {
     if (sym == ident) {
         getsym();
         if (sym == eql || sym == becomes) {
@@ -125,7 +124,7 @@ void constdeclaration(int lev, int &tx) {
     }
 }
 
-void vardeclaration(int lev, int &tx) {
+void vardeclaration(int lev, int &tx, int &dx) {
     if (sym == ident) {
         enter(variable, dx, lev, tx);
         getsym();
@@ -402,7 +401,7 @@ void condition(symset fsys, int lev, int &tx) {
         tmp.insert(fsys.begin(), fsys.end());
         tmp.insert(eql);        tmp.insert(neq);        tmp.insert(lss);
         tmp.insert(gtr);        tmp.insert(leq);        tmp.insert(geq);
-        expression(tmp, levmax, tx);
+        expression(tmp, lev, tx);
         tmp.clear();
         tmp.insert(eql);        tmp.insert(neq);        tmp.insert(lss);
         tmp.insert(gtr);        tmp.insert(leq);        tmp.insert(geq);

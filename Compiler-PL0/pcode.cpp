@@ -14,15 +14,14 @@ void gen(fct x, int y, int z) {
         //TODO 关闭文件
         return;
     }
-    cx++;
     code[cx].f = x;
     code[cx].l = y;
     code[cx].a = z;
+    cx++;
 }
 
 void listcode(int cx0) {
-    for (int i = cx0; i <= cx; i++) {
-        //printf("%d %s %d %d\n", i, mnemonic[code[i].f], code[i].l, code[i].a);
+    for (int i = cx0; i < cx; i++) {
         cout << i << " " << mnemonic[code[i].f] << " " << code[i].l << " " << code[i].a << endl;
     }
 }

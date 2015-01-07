@@ -24,7 +24,6 @@ void getch() {
         }
         cout << line << endl;
         ll = (int)line.length();
-        line[ll] = ' ';
     }
     ch = line[cc++];
 }
@@ -44,15 +43,6 @@ void getsym() {
             getch();
         } while (((ch >= 'a') && (ch <= 'z')) || ((ch >= '0') && (ch <= '9')));
         k = kk = (int)a.length();
-//        if (k >= kk) { // kk 是最后一个保留字的长度
-//            kk = k;
-//        }
-//        } else {
-//            do {
-//                a[--kk] = ' ';
-//            } while (kk != k);
-//        }
-//        strcpy(id, a);
         id.clear();
         id = a;
         i = 1;
@@ -119,7 +109,7 @@ void getsym() {
 void test(symset s1, symset s2, int n) {
     if (!s1.count(sym)) {
         error(n);
-        while (!s1.count(sym) || !s2.count(sym)) {
+        while (!s1.count(sym) && !s2.count(sym)) {
             getsym();
         }
     }

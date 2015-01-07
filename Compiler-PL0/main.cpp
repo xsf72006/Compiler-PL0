@@ -44,7 +44,7 @@ symset declbegsys, statbegsys, facbegsys;
 ifstream fin;
 
 int main(int argc, const char * argv[]) {
-    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/3.in");
+    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/2.in");
     memset(ssym, 0, sizeof(ssym));
     
     //初始化保留字
@@ -83,7 +83,7 @@ int main(int argc, const char * argv[]) {
     
     err = cc = cx = ll = 0;
     ch = ' ';
-    kk = al+1;
+    kk = al+1;   //???
     
     //取第一个词
     getsym();
@@ -103,7 +103,7 @@ int main(int argc, const char * argv[]) {
     if (err == 0) {
         //输出P-code
         //解释
-        listcode(1);
+        listcode(0);
         interpret();
     } else {
         cout << "ERRORS IN PL/0 PROGRAM" << endl;
