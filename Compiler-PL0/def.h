@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <cstring>
 #include <string>
+#include <setjmp.h>
 
 using namespace std;
 
@@ -65,7 +66,7 @@ extern string id, //最后读的标识符
 
 extern int num, //最后读的数字
             cc, //字符所在行计数
-            ll, //行号
+            ll,ln, //行长度
             kk, err,
             cx; //代码收集索引
 
@@ -73,6 +74,10 @@ extern instruction code[cxmax + 1];
 
 extern symset declbegsys, statbegsys, facbegsys;
 
+extern string errmsg[40];
+
 extern ifstream fin;
+
+extern jmp_buf buf;
 
 #endif

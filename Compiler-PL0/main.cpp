@@ -33,7 +33,7 @@ string id, //最后读的标识符
 
 int num, //最后读的数字
     cc, //字符所在行计数
-    ll, //行号
+    ll,ln, //行号
     kk, err,
     cx; //代码收集索引
 
@@ -41,11 +41,44 @@ instruction code[cxmax + 1];
 
 symset declbegsys, statbegsys, facbegsys;
 
+string errmsg[40] = {
+    "应是=而不是:=",
+    "=后应为数",
+    "标识符后应为=",
+    "const,var,procedure后应为标识符",
+    "漏掉逗号或分号",
+    "过程说明后的符号不正确",
+    "应为语句",
+    "程序体内语句部分后的符号不正确",
+    "应为句号",
+    "语句之间漏分号",
+    "标识符为说明",
+    "不可向常量或过程赋值",
+    "应为赋值运算符:=",
+    "call后应为标识符",
+    "不可调用常量或变量",
+    "应为then",
+    "应为分号或end",
+    "应为do",
+    "语句后的符号不正确",
+    "应为关系运算符",
+    "表达式内不可有过程标识符",
+    "漏右括号",
+    "因子后不可为此符号",
+    "表达式不能以此符号开始"
+};
+
 ifstream fin;
 
+jmp_buf buf;
+
 int main(int argc, const char * argv[]) {
-    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/2.in");
+    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/5.in");
     memset(ssym, 0, sizeof(ssym));
+    
+    errmsg[29] = "这个数太大";
+    errmsg[31] = "嵌套层数过多";
+    errmsg[39] = "应为左括号";
     
     //初始化保留字
     word[1] = "begin"; word[2] = "call"; word[3] = "const"; word[4] = "do"; word[5] = "end";
@@ -81,7 +114,7 @@ int main(int argc, const char * argv[]) {
     facbegsys.insert(number);
     facbegsys.insert(lparen);
     
-    err = cc = cx = ll = 0;
+    err = cc = cx = ll = ln = 0;
     ch = ' ';
     kk = al+1;   //???
     
@@ -93,19 +126,21 @@ int main(int argc, const char * argv[]) {
     tmp.insert(declbegsys.begin(), declbegsys.end());
     tmp.insert(statbegsys.begin(), statbegsys.end());
     tmp.insert(period);
-    block(0, 0, tmp);
+    
+    if (!setjmp(buf)) {
+        block(0, 0, tmp);
+    }
     
     if (sym != period) {
         //错误处理 9
         error(9);
     }
     
+    listcode(0);
     if (err == 0) {
-        //输出P-code
         //解释
-        listcode(0);
         interpret();
     } else {
-        cout << "ERRORS IN PL/0 PROGRAM" << endl;
+        cout << err << " ERROR(S) IN PL/0 PROGRAM" << endl;
     }
 }

@@ -8,22 +8,22 @@
 
 #include "words.h"
 
-//TODO 统一输入输出风格
-
 void getch() {
     if (cc == ll) { //到达行末，读下一行
-        if (fin.eof()) {
-            cout << "程序未完成" << endl;
-            return;
-        }
         ll = cc = 0;
         printf("%d ", cx);
         getline(fin, line);
-        while (line == "") {
+        while (!fin.eof() && line == "") {
             getline(fin, line);
+        }
+        if (line == "" && fin.eof()) {
+            cout << "程序未完成" << endl;
+            longjmp(buf, 1);
         }
         cout << line << endl;
         ll = (int)line.length();
+        line[ll++] = ' ';
+        ln++;
     }
     ch = line[cc++];
 }

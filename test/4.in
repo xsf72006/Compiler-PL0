@@ -1,0 +1,4 @@
+var a;
+begin
+a:=3
+write(a)
