@@ -100,10 +100,10 @@ void block(int lev, int tx, symset fsys) {
     symset tmp2;
     tmp2.clear();
     test(fsys, tmp2, 8);
-    listcode(cx0);
+    //listcode(cx0);
 }
 
-void constdeclaration(int lev, int tx) {
+void constdeclaration(int lev, int &tx) {
     if (sym == ident) {
         getsym();
         if (sym == eql || sym == becomes) {
@@ -125,7 +125,7 @@ void constdeclaration(int lev, int tx) {
     }
 }
 
-void vardeclaration(int lev, int tx) {
+void vardeclaration(int lev, int &tx) {
     if (sym == ident) {
         enter(variable, dx, lev, tx);
         getsym();
@@ -134,7 +134,7 @@ void vardeclaration(int lev, int tx) {
     }
 }
 
-void statement(symset fsys, int lev, int tx) {
+void statement(symset fsys, int lev, int &tx) {
     int i, cx1, cx2;
     if (sym == ident) {
         i = position(id, tx);
@@ -287,7 +287,7 @@ void statement(symset fsys, int lev, int tx) {
     test(fsys, tmp, 19);
 }
 
-void expression(symset fsys, int lev, int tx) {
+void expression(symset fsys, int lev, int &tx) {
     symbol addop;
     symset tmp;
     tmp.clear();
@@ -318,7 +318,7 @@ void expression(symset fsys, int lev, int tx) {
     }
 }
 
-void term(symset fsys, int lev, int tx) {
+void term(symset fsys, int lev, int &tx) {
     symbol mulop;
     symset tmp;
     tmp.clear();
@@ -339,7 +339,7 @@ void term(symset fsys, int lev, int tx) {
     }
 }
 
-void factor(symset fsys, int lev, int tx) {
+void factor(symset fsys, int lev, int &tx) {
     int i;
     test(facbegsys, fsys, 24);
     while (facbegsys.count(sym)) {
@@ -390,7 +390,7 @@ void factor(symset fsys, int lev, int tx) {
     }
 }
 
-void condition(symset fsys, int lev, int tx) {
+void condition(symset fsys, int lev, int &tx) {
     symbol relop;
     if (sym == oddsym) {
         getsym();

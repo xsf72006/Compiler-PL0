@@ -13,6 +13,6 @@
 #include "error.h"
 
 void enter(objecttyp k, int &dx, int lev, int &tx);
-int position(alfa id, int tx);
+int position(string id, int tx);
 
 #endif /* defined(__Compiler_PL0__tab__) */

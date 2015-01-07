@@ -10,5 +10,5 @@
 
 void error(int n) {
     //TODO 添加行号；添加中文错误信息
-    cout << "error at " << cc << ", error code " << n << endl;
+    cout << "error at column " << cc-1 << ", error code " << n << endl;
 }

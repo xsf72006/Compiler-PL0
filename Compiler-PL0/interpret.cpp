@@ -85,6 +85,7 @@ void interpret() {
                     case 12:
                         t--;
                         s[t] = (s[t] <= s[t+1]);
+                        break;
                     default:
                         break;
                 }
@@ -114,8 +115,8 @@ void interpret() {
                 }
                 break;
             case red:
-                cout << "??:" << endl;
-                scanf("%d", &s[base(i.l) + i.a]);
+                cout << "请输入:" << endl;
+                cin >> s[base(i.l) + i.a];
                 break;
             case wrt:
                 cout << s[t++] << endl;

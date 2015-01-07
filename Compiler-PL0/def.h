@@ -9,11 +9,13 @@
 #ifndef Compiler_PL0_def_h
 #define Compiler_PL0_def_h
 #include <iostream>
+#include <fstream>
 #include <set>
 #include <cstdio>
 #include <cstring>
+#include <string>
 
-using namespace::std;
+using namespace std;
 
 //常量定义
 const int norw = 13, // 保留字个数
@@ -31,8 +33,6 @@ enum symbol {nul, ident, number, pluss, minuss, times, slash, oddsym, eql, neq, 
 enum objecttyp {constant, variable, procedure}; //对象类型
 enum fct {lit, opr, lod, sto, cal, inta, jmp, jpc, red, wrt}; //P-code函数
 
-typedef char alfa[al]; //标识符名称
-
 typedef set<symbol> symset; //保留字集合
 
 struct instruction {
@@ -42,24 +42,26 @@ struct instruction {
 };
 
 struct tab {
-    alfa name;
+    string name;
     objecttyp kind;
     int val, level, adr;
 };
 
 extern symbol sym, //最后读的保留字
-       wsym[norw],
-       ssym[256];
+              wsym[norw+1],
+              ssym[256];
 
-extern tab table[txmax + 1];
+extern tab table[txmax + 2];
 
-extern char ch, //最后一个读的字符
-            line[81],
-            mnemonic[10][5];
+extern char ch; //最后一个读的字符
 
-extern alfa id, //最后读的标识符
-            a,
-            word[norw];
+extern string mnemonic[11];
+
+extern string line;
+
+extern string id, //最后读的标识符
+              a,
+              word[norw+1];
 
 extern int num, //最后读的数字
             cc, //字符所在行计数
@@ -70,5 +72,7 @@ extern int num, //最后读的数字
 extern instruction code[cxmax + 1];
 
 extern symset declbegsys, statbegsys, facbegsys;
+
+extern ifstream fin;
 
 #endif

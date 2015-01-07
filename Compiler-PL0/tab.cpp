@@ -9,7 +9,8 @@
 #include "tab.h"
 
 void enter(objecttyp k, int &dx, int lev, int &tx) {
-    strcpy(table[++tx].name, id);
+    //strcpy(table[++tx].name, id);
+    table[++tx].name = id;
     table[tx].kind = k;
     switch (k) {
         case constant:
@@ -31,11 +32,12 @@ void enter(objecttyp k, int &dx, int lev, int &tx) {
     }
 }
 
-int position(alfa id, int tx) {
+int position(string id, int tx) {
     int i;
-    strcpy(table[0].name, id);
+    //strcpy(table[0].name, id);
+    table[0].name = id;
     i = tx;
-    while (strcmp(table[i].name, id)) {
+    while (table[i].name != id) {
         i--;
     }
     return i;

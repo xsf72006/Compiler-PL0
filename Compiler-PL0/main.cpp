@@ -16,18 +16,20 @@
 #include "interpret.h"
 
 symbol sym, //最后读的保留字
-       wsym[norw],
+       wsym[norw+1],
        ssym[256];
 
-tab table[txmax + 1];
+tab table[txmax + 2];
 
-char ch, //最后一个读的字符
-     line[81],
-     mnemonic[10][5];
+char ch; //最后一个读的字符
 
-alfa id, //最后读的标识符
-     a,
-     word[norw];
+string mnemonic[11];
+
+string line;
+
+string id, //最后读的标识符
+        a,
+        word[norw+1];
 
 int num, //最后读的数字
     cc, //字符所在行计数
@@ -39,29 +41,29 @@ instruction code[cxmax + 1];
 
 symset declbegsys, statbegsys, facbegsys;
 
+ifstream fin;
+
 int main(int argc, const char * argv[]) {
+    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/3.in");
     memset(ssym, 0, sizeof(ssym));
     
     //初始化保留字
-    strcpy(word[0], "begin");   strcpy(word[1], "call");        strcpy(word[2], "const");
-    strcpy(word[3], "do");      strcpy(word[4], "end");         strcpy(word[5], "if");
-    strcpy(word[6], "odd");     strcpy(word[7], "procedure");   strcpy(word[8], "read");
-    strcpy(word[9], "then");    strcpy(word[10], "var");        strcpy(word[11], "while");
-    strcpy(word[12], "write");
+    word[1] = "begin"; word[2] = "call"; word[3] = "const"; word[4] = "do"; word[5] = "end";
+    word[6] = "if"; word[7] = "odd"; word[8] = "procedure"; word[9] = "read"; word[10] = "then";
+    word[11] = "var"; word[12] = "while"; word[13] = "write";
     
-    wsym[0] = beginsym;     wsym[1] = callsym;      wsym[2] = constsym;     wsym[3] = dosym;
-    wsym[4] = endsym;       wsym[5] = ifsym;        wsym[6] = oddsym;       wsym[7] = procsym;
-    wsym[8] = readsym;      wsym[9] = thensym;      wsym[10] = varsym;      wsym[11] = whilesym;
-    wsym[12] = writesym;
+    wsym[1] = beginsym;     wsym[2] = callsym;      wsym[3] = constsym;     wsym[4] = dosym;
+    wsym[5] = endsym;       wsym[6] = ifsym;        wsym[7] = oddsym;       wsym[8] = procsym;
+    wsym[9] = readsym;      wsym[10] = thensym;      wsym[11] = varsym;      wsym[12] = whilesym;
+    wsym[13] = writesym;
     
     ssym['+'] = pluss;      ssym['-'] = minuss;     ssym['*'] = times;      ssym['/'] = slash;
     ssym['('] = lparen;     ssym[')'] = rparen;     ssym['='] = eql;        ssym[','] = comma;
     ssym['.'] = period;     ssym['<'] = lss;        ssym['>'] = gtr;        ssym[';'] = semicolon;
-    
-    strcpy(mnemonic[lit], "LIT");    strcpy(mnemonic[opr], "OPR");    strcpy(mnemonic[lod], "LOD");
-    strcpy(mnemonic[sto], "STO");    strcpy(mnemonic[cal], "CAL");    strcpy(mnemonic[inta], "INT");
-    strcpy(mnemonic[jmp], "JMP");    strcpy(mnemonic[jpc], "JPC");    strcpy(mnemonic[red], "RED");
-    strcpy(mnemonic[wrt], "WRT");
+
+    mnemonic[lit] = "LIT"; mnemonic[opr] = "OPR"; mnemonic[lod] = "LOD"; mnemonic[sto] = "STO";
+    mnemonic[cal] = "CAL"; mnemonic[inta] = "INT"; mnemonic[jmp] = "JMP"; mnemonic[jpc] = "JPC";
+    mnemonic[red] = "RED"; mnemonic[wrt] = "WRT";
     
     declbegsys.clear();
     declbegsys.insert(constsym);
@@ -80,8 +82,8 @@ int main(int argc, const char * argv[]) {
     facbegsys.insert(lparen);
     
     err = cc = cx = ll = 0;
-    ch = NULL;
-    kk = al;
+    ch = ' ';
+    kk = al+1;
     
     //取第一个词
     getsym();
@@ -101,6 +103,7 @@ int main(int argc, const char * argv[]) {
     if (err == 0) {
         //输出P-code
         //解释
+        listcode(1);
         interpret();
     } else {
         cout << "ERRORS IN PL/0 PROGRAM" << endl;

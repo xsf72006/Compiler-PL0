@@ -12,21 +12,21 @@
 
 void getch() {
     if (cc == ll) { //到达行末，读下一行
-        if (scanf("%c", &ch) == EOF) {
+        if (fin.eof()) {
             cout << "程序未完成" << endl;
             return;
         }
         ll = cc = 0;
-        cout << cx;
-        while (ch != '\n') {
-            cout << ch;
-            line[++ll] = ch;
-            scanf("%c", &ch);
+        printf("%d ", cx);
+        getline(fin, line);
+        while (line == "") {
+            getline(fin, line);
         }
-        cout << endl;
-        line[++ll] = ' ';
+        cout << line << endl;
+        ll = (int)line.length();
+        line[ll] = ' ';
     }
-    ch = line[++cc];
+    ch = line[cc++];
 }
 
 void getsym() {
@@ -36,30 +36,33 @@ void getsym() {
     
     if ((ch >= 'a') && (ch <= 'z')) { //识别保留字
         k = 0;
+        a.clear();
         do {
             if (k < al) {
-                a[++k] = ch;
+                a += ch;
             }
             getch();
         } while (((ch >= 'a') && (ch <= 'z')) || ((ch >= '0') && (ch <= '9')));
-        
-        if (k >= kk) { // kk 是最后一个保留字的长度
-            kk = k;
-        } else {
-            do {
-                a[kk--] = ' ';
-            } while (kk != k);
-        }
-        
-        strcpy(id, a);
+        k = kk = (int)a.length();
+//        if (k >= kk) { // kk 是最后一个保留字的长度
+//            kk = k;
+//        }
+//        } else {
+//            do {
+//                a[--kk] = ' ';
+//            } while (kk != k);
+//        }
+//        strcpy(id, a);
+        id.clear();
+        id = a;
         i = 1;
         j = norw; //二分检索保留字表
         do {
             k = (i + j) / 2;
-            if (strcmp(id, word[k]) <= 0) {
+            if (id <= word[k]) {
                 j = k - 1;
             }
-            if (strcmp(id, word[k]) >= 0) {
+            if (id >= word[k]) {
                 i = k + 1;
             }
         } while (i <= j);
