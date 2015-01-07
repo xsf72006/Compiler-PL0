@@ -19,7 +19,7 @@
 using namespace std;
 
 //常量定义
-const int norw = 13, // 保留字个数
+const int norw = 14, // 保留字个数
           txmax = 100, //符号表最大长度
           nmax = 14, //数字最长位数
           al = 10, //标识符最大长度
@@ -30,7 +30,7 @@ const int norw = 13, // 保留字个数
 //定义新类型
 enum symbol {nul, ident, number, pluss, minuss, times, slash, oddsym, eql, neq, lss, leq, gtr, geq,
     lparen, rparen, comma, semicolon, period, becomes, beginsym, endsym, ifsym, thensym,
-    whilesym, dosym, callsym, constsym, varsym, procsym, readsym, writesym}; //保留字枚举类型
+    whilesym, dosym, callsym, constsym, varsym, procsym, readsym, writesym, elsesym}; //保留字枚举类型
 enum objecttyp {constant, variable, procedure}; //对象类型
 enum fct {lit, opr, lod, sto, cal, inta, jmp, jpc, red, wrt}; //P-code函数
 

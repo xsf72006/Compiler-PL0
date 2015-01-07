@@ -73,7 +73,7 @@ ifstream fin;
 jmp_buf buf;
 
 int main(int argc, const char * argv[]) {
-    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/5.in");
+    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/6.in");
     memset(ssym, 0, sizeof(ssym));
     
     errmsg[29] = "这个数太大";
@@ -81,14 +81,14 @@ int main(int argc, const char * argv[]) {
     errmsg[39] = "应为左括号";
     
     //初始化保留字
-    word[1] = "begin"; word[2] = "call"; word[3] = "const"; word[4] = "do"; word[5] = "end";
-    word[6] = "if"; word[7] = "odd"; word[8] = "procedure"; word[9] = "read"; word[10] = "then";
-    word[11] = "var"; word[12] = "while"; word[13] = "write";
+    word[1] = "begin"; word[2] = "call"; word[3] = "const"; word[4] = "do"; word[5] = "else";
+    word[6] = "end";   word[7] = "if"; word[8] = "odd"; word[9] = "procedure"; word[10] = "read";
+    word[11] = "then";  word[12] = "var"; word[13] = "while"; word[14] = "write";
     
     wsym[1] = beginsym;     wsym[2] = callsym;      wsym[3] = constsym;     wsym[4] = dosym;
-    wsym[5] = endsym;       wsym[6] = ifsym;        wsym[7] = oddsym;       wsym[8] = procsym;
-    wsym[9] = readsym;      wsym[10] = thensym;      wsym[11] = varsym;      wsym[12] = whilesym;
-    wsym[13] = writesym;
+    wsym[5] = elsesym;      wsym[6] = endsym;       wsym[7] = ifsym;        wsym[8] = oddsym;
+    wsym[9] = procsym;      wsym[10] = readsym;      wsym[11] = thensym;      wsym[12] = varsym;
+    wsym[13] = whilesym;    wsym[14] = writesym;
     
     ssym['+'] = pluss;      ssym['-'] = minuss;     ssym['*'] = times;      ssym['/'] = slash;
     ssym['('] = lparen;     ssym[')'] = rparen;     ssym['='] = eql;        ssym[','] = comma;

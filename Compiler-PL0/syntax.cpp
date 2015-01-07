@@ -185,8 +185,21 @@ void statement(symset fsys, int lev, int &tx) {
         }
         cx1 = cx;
         gen(jpc, 0, 0);
-        statement(fsys, lev, tx);
-        code[cx1].a = cx;
+        symset tmp2;
+        tmp2.clear();
+        tmp2.insert(fsys.begin(), fsys.end());
+        tmp2.insert(elsesym);
+        statement(tmp2, lev, tx);
+        if (sym == elsesym) {
+            getsym();
+            cx2 = cx;
+            gen(jmp, 0, 0);
+            code[cx1].a = cx;
+            statement(fsys, lev, tx);
+            code[cx2].a = cx;
+        } else {
+            code[cx1].a = cx;
+        }
     } else if (sym == beginsym) {
         getsym();
         symset tmp;
