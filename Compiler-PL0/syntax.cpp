@@ -293,6 +293,42 @@ void statement(symset fsys, int lev, int &tx) {
         } else {
             error(40);
         }
+    } else if (sym == repeatsym) {
+        cx1 = cx;
+        getsym();
+        symset tmp;
+        tmp.clear();
+        tmp.insert(fsys.begin(), fsys.end());
+        tmp.insert(semicolon);
+        tmp.insert(untilsym);
+        statement(tmp, lev, tx);
+        symset tmp2;
+        tmp2.clear();
+        tmp2.insert(beginsym);
+        tmp2.insert(callsym);
+        tmp2.insert(ifsym);
+        tmp2.insert(whilesym);
+        tmp2.insert(semicolon);
+        while (tmp2.count(sym)) {
+            if (sym == semicolon) {
+                getsym();
+            } else {
+                error(25);
+            }
+            symset tmp3;
+            tmp3.clear();
+            tmp3.insert(fsys.begin(), fsys.end());
+            tmp3.insert(semicolon);
+            tmp3.insert(untilsym);
+            statement(tmp3, lev, tx);
+        }
+        if (sym == untilsym) {
+            getsym();
+            condition(fsys, lev, tx);
+            gen(jpc, 0, cx1);
+        } else {
+            error(26);
+        }
     }
     symset tmp;
     tmp.clear();

@@ -73,9 +73,11 @@ ifstream fin;
 jmp_buf buf;
 
 int main(int argc, const char * argv[]) {
-    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/6.in");
+    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/7.in");
     memset(ssym, 0, sizeof(ssym));
     
+    errmsg[24] = "缺少分号";
+    errmsg[25] = "缺少until";
     errmsg[29] = "这个数太大";
     errmsg[31] = "嵌套层数过多";
     errmsg[39] = "应为左括号";
@@ -83,12 +85,13 @@ int main(int argc, const char * argv[]) {
     //初始化保留字
     word[1] = "begin"; word[2] = "call"; word[3] = "const"; word[4] = "do"; word[5] = "else";
     word[6] = "end";   word[7] = "if"; word[8] = "odd"; word[9] = "procedure"; word[10] = "read";
-    word[11] = "then";  word[12] = "var"; word[13] = "while"; word[14] = "write";
+    word[11] = "repeat"; word[12] = "then";  word[13] = "until"; word[14] = "var";
+    word[15] = "while"; word[16] = "write";
     
     wsym[1] = beginsym;     wsym[2] = callsym;      wsym[3] = constsym;     wsym[4] = dosym;
     wsym[5] = elsesym;      wsym[6] = endsym;       wsym[7] = ifsym;        wsym[8] = oddsym;
-    wsym[9] = procsym;      wsym[10] = readsym;      wsym[11] = thensym;      wsym[12] = varsym;
-    wsym[13] = whilesym;    wsym[14] = writesym;
+    wsym[9] = procsym;      wsym[10] = readsym;     wsym[11] = repeatsym;  wsym[12] = thensym;
+    wsym[13] = untilsym;    wsym[14] = varsym;      wsym[15] = whilesym;    wsym[16] = writesym;
     
     ssym['+'] = pluss;      ssym['-'] = minuss;     ssym['*'] = times;      ssym['/'] = slash;
     ssym['('] = lparen;     ssym[')'] = rparen;     ssym['='] = eql;        ssym[','] = comma;
@@ -108,6 +111,7 @@ int main(int argc, const char * argv[]) {
     statbegsys.insert(callsym);
     statbegsys.insert(ifsym);
     statbegsys.insert(whilesym);
+    statbegsys.insert(repeatsym);
     
     facbegsys.clear();
     facbegsys.insert(ident);

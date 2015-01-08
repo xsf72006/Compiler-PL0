@@ -1,0 +1,17 @@
+var a;
+begin
+a:=6;
+repeat
+write(a);
+if a>=4 then begin
+write(11);
+end
+else if a>=2 then begin
+write(22);
+end
+else begin
+write(33);
+end;
+a:=a-1
+until a<0;
+end.
