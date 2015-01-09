@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 TimmyXu. All rights reserved.
 //
 
-
 #include "def.h"
 #include "error.h"
 #include "words.h"
@@ -73,7 +72,14 @@ ifstream fin;
 jmp_buf buf;
 
 int main(int argc, const char * argv[]) {
-    fin.open("/Users/timmyxu/Sites/Compiler-PL0/test/7.in");
+    cout << "编译实践 - PL/0编译系统   作者：徐少峰" << endl;
+    cout << "请输入测试用例（1~7）：";
+    string path = "/Users/timmyxu/Sites/Compiler-PL0/test/";
+    string num;
+    cin >> num;
+    path.append(num);
+    path.append(".in");
+    fin.open(path.c_str());
     memset(ssym, 0, sizeof(ssym));
     
     errmsg[24] = "缺少分号";
@@ -145,6 +151,6 @@ int main(int argc, const char * argv[]) {
         //解释
         interpret();
     } else {
-        cout << err << " ERROR(S) IN PL/0 PROGRAM" << endl;
+        cout << "代码段中共有" << err << "个错误" <<endl;
     }
 }

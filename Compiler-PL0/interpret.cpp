@@ -22,7 +22,7 @@ int base(int l) {
 }
 
 void interpret() {
-    cout << "START PL/0" << endl;
+    cout << "开始解释程序" << endl;
     t = p = 0;
     b = 1;
     s[1] = s[2] = s[3] = 0;
@@ -131,5 +131,5 @@ void interpret() {
                 break;
         }
     } while (p != 0);
-    cout << "END PL/0" << endl;
+    cout << "结束解释程序" << endl;
 }
